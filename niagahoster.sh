@@ -1,6 +1,6 @@
 #!/bin/bash
-#Unipin Checker
-#issued on : 13 April 2018
+#Niagahoster.co.id Checker
+#issued on : 6 Mei 2018
 #coded By Achon666ju5t - SatriaMagnum
 NC='\033[0m'
 GREEN='\e[38;5;82m'
