@@ -2,7 +2,7 @@
 #achonxhax0r@outlook.com
 #esdnaomi@gmail.com
 #voucher Tri Extrap Voucher Pulsa
-if [ ! -f $1 ] ; then
+if [ ! $1 ] ; then
 echo "usage $0 <1000>"
 exit;
 fi
