@@ -15,7 +15,7 @@ fi
  	lynx --dump "https://google.com/search?q=$dork" --dump | grep -Po "(?<=\/url\?q=).*?(?=\&)" >> Achonkjust/resultgoogle.txt
 lynx --dump "https://google.com/search?q=$dork" | grep "search?q=" | tail | gawk -F/ '{ print $4 }' >> Achonkjust/page.txt
 for ngambil in $(cat Achonkjust/page.txt); do
-	lynx --dump https://www.google.com/$ngambil --dump | grep -Po "(?<=\/url\?q=).*?(?=\&)" >> Achonkjust/resultgoogle.txt
+	lynx --dump https://www.google.com/$ngambil | grep -Po "(?<=\/url\?q=).*?(?=\&)" >> Achonkjust/resultgoogle.txt
 	done
 	cat ${dir}/resultgoogle.txt
 	printf "${ijo} saved to Achonkjust/resultgoogle.txt ${putih}\n"
