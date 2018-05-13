@@ -1,33 +1,34 @@
 #Coded By AchonkJust - Extreme Crew
 #issued 10-mei-2018
-#!/bin/bash
+#!/bin/bash/sh
 putih='\033[0m'
 ijo='\e[38;5;82m'
 merah='\e[38;5;196m'
 dir="Achonkjust"
-if [ ! -d Achonkjust]; then
+if [ ! -d Achonkjust/google.com ]; then
 	mkdir $dir
 fi
 
  google(){
  	echo -n "Input Your Dork : "
  	read dork
- 	lynx --dump "https://google.com/search?q=$dork" --dump | grep -Po "(?<=\/url\?q=).*?(?=\&)" >> Achonkjust/resultgoogle.txt
+ 	lynx --dump "https://google.com/search?q=\@yahoo.com+filetype:txt" | grep -Po "(?<=url\?q=).*?(?=\&)" >> Achonkjust/resultgoogle.txt
 lynx --dump "https://google.com/search?q=$dork" | grep "search?q=" | tail | gawk -F/ '{ print $4 }' >> Achonkjust/page.txt
 for ngambil in $(cat Achonkjust/page.txt); do
 	lynx --dump https://www.google.com/$ngambil | grep -Po "(?<=\/url\?q=).*?(?=\&)" >> Achonkjust/resultgoogle.txt
 	done
 	cat ${dir}/resultgoogle.txt
-	printf "${ijo} saved to Achonkjust/google.txt ${putih}\n"
+
+	printf "${ijo} saved to Achonkjust/resultgoogle.txt ${putih}\n"
 	rm -f Achonkjust/page.txt
 }
 bing(){
-	echo -n "Put Your Dork : "
+	echo -n "Put yur dork : "
 	read dork
-	lynx --dump "https://www.bing.com/search?q=$dork" | grep -v "bing" | grep -v "javascript" | tail -20 >> ${dir}/resultbing.txt
-	lynx --dump "https://www.bing.com/search?q=$dork" | grep "search?q=" | grep "first" | gawk -F/ '{print $4}' >> ${dir}/page.txt
-	for more in $(cat Achonkjust/page.txt); do 
-	lynx --dump "https://www.bing.com/$more" grep -v "bing" | grep -v "javascript" | tail -20 >> ${dir}/resultbing.txt
+	 lynx --dump https://www.bing.com/search?q=$dork | grep http |  grep -v "bing" | grep -v "javascript" | grep -v "microsoft"
+	ea=$(lynx --dump "https://www.bing.com/search?q=$dork" | grep "search?q=" | grep "first" | gawk -F/ '{print $4}')
+	for more in $ea; do 
+	lynx --dump "https://www.bing.com/$more" | grep "http" | grep -v "bing" | grep -v "javascript" | grep -v "microsoft" >> ${dir}/resultbing.txt
 done
 	cat ${dir}/resultbing.txt
 	printf "${ijo} Resul Saved to ${dir}/resultbing.txt ${putih}\n"
