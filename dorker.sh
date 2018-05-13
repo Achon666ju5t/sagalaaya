@@ -18,12 +18,14 @@ for ngambil in $(cat Achonkjust/page.txt); do
 	lynx --dump https://www.google.com/$ngambil | grep -Po "(?<=\/url\?q=).*?(?=\&)" >> Achonkjust/resultgoogle.txt
 	done
 	cat ${dir}/resultgoogle.txt
-	printf "${ijo} saved to Achonkjust/resultgoogle.txt ${putih}\n"
+	printf "${ijo} saved to Achonkjust/google.txt ${putih}\n"
 	rm -f Achonkjust/page.txt
 }
 bing(){
-	lynx --dump "https://www.bing.com/search?q=Achon666ju5t" | grep -v "bing" | grep -v "javascript" | tail -20 >> ${dir}/resultbing.txt
-	lynx --dump "https://www.bing.com/search?q=Achon666ju5t" | grep "search?q=" | grep "first" | gawk -F/ '{print $4}' >> ${dir}/page.txt
+	echo -n "Put Your Dork : "
+	read dork
+	lynx --dump "https://www.bing.com/search?q=$dork" | grep -v "bing" | grep -v "javascript" | tail -20 >> ${dir}/resultbing.txt
+	lynx --dump "https://www.bing.com/search?q=$dork" | grep "search?q=" | grep "first" | gawk -F/ '{print $4}' >> ${dir}/page.txt
 	for more in $(cat Achonkjust/page.txt); do 
 	lynx --dump "https://www.bing.com/$more" grep -v "bing" | grep -v "javascript" | tail -20 >> ${dir}/resultbing.txt
 done
