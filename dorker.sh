@@ -5,7 +5,7 @@ putih='\033[0m'
 ijo='\e[38;5;82m'
 merah='\e[38;5;196m'
 dir="Achonkjust"
-if [ ! -d Achonkjust/google.com ]; then
+if [ ! -d Achonkjust]; then
 	mkdir $dir
 fi
 
