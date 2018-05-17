@@ -12,25 +12,26 @@ fi
  google(){
  	echo -n "Input Your Dork : "
  	read dork
- 	lynx --dump "https://google.com/search?q=\@yahoo.com+filetype:txt" | grep -Po "(?<=url\?q=).*?(?=\&)" >> Achonkjust/resultgoogle.txt
+ 	lynx --dump "https://google.com/search?q=$dork" | grep -Po "(?<=url\?q=).*?(?=\&)" >> Achonkjust/resultgoogle.txt
 lynx --dump "https://google.com/search?q=$dork" | grep "search?q=" | tail | gawk -F/ '{ print $4 }' >> Achonkjust/page.txt
 for ngambil in $(cat Achonkjust/page.txt); do
-	lynx --dump https://www.google.com/$ngambil | grep -Po "(?<=\/url\?q=).*?(?=\&)" >> Achonkjust/resultgoogle.txt
+	ambilsemua=$(lynx --dump https://www.google.com/$ngambil | grep -Po "(?<=\/url\?q=).*?(?=\&)")
+	echo "$ambilsemua"
+	echo "$ambilsemua" >> Achonkjust/resultgoogle.txt
 	done
-	cat ${dir}/resultgoogle.txt
-
-	printf "${ijo} saved to Achonkjust/resultgoogle.txt ${putih}\n"
+	printf "${ijo} saved to ${dir}/resultgoogle.txt ${putih}\n"
 	rm -f Achonkjust/page.txt
 }
 bing(){
 	echo -n "Put yur dork : "
 	read dork
 	 lynx --dump https://www.bing.com/search?q=$dork | grep http |  grep -v "bing" | grep -v "javascript" | grep -v "microsoft"
-	ea=$(lynx --dump "https://www.bing.com/search?q=$dork" | grep "search?q=" | grep "first" | gawk -F/ '{print $4}')
-	for more in $ea; do 
-	lynx --dump "https://www.bing.com/$more" | grep "http" | grep -v "bing" | grep -v "javascript" | grep -v "microsoft" >> ${dir}/resultbing.txt
+	lynx --dump "https://www.bing.com/search?q=$dork" | grep "search?q=" | grep "first" | gawk -F/ '{print $4}' >> Achonkjust/bing.txt
+	for more in $(cat ${dir}/bing.txt); do 
+	ambilbing=$(lynx --dump "https://www.bing.com/$more" | grep "http" | grep -v "bing" | grep -v "javascript" | grep -v "microsoft")
+	echo "$ambilbing"
+	echo "ambilbing" >> ${dir}/resultbing.txt
 done
-	cat ${dir}/resultbing.txt
 	printf "${ijo} Resul Saved to ${dir}/resultbing.txt ${putih}\n"
 	rm -f ${dir}/page.txt
 }
