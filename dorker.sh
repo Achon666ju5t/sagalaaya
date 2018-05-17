@@ -1,9 +1,19 @@
 #Coded By AchonkJust - Extreme Crew
 #issued 10-mei-2018
+#Google Dorker
 #!/bin/bash/sh
 putih='\033[0m'
 ijo='\e[38;5;82m'
 merah='\e[38;5;196m'
+echo "wait.... iam checking my request"
+link=$(sudo apt-get install lynx | grep -o "installed" | head -1)
+if [[ "$link" = "installed" ]]; then
+	echo "ready bos `whoami`"
+else
+	echo "installing my request.."
+	sudo apt-get install -qq lynx
+	echo "Done Checking.."
+fi
 dir="Achonkjust"
 if [ ! -d Achonkjust/google.com ]; then
 	mkdir $dir
@@ -30,7 +40,7 @@ bing(){
 	for more in $(cat ${dir}/bing.txt); do 
 	ambilbing=$(lynx --dump "https://www.bing.com/$more" | grep "http" | grep -v "bing" | grep -v "javascript" | grep -v "microsoft")
 	echo "$ambilbing"
-	echo "ambilbing" >> ${dir}/resultbing.txt
+	echo "$ambilbing" >> ${dir}/resultbing.txt
 done
 	printf "${ijo} Resul Saved to ${dir}/resultbing.txt ${putih}\n"
 	rm -f ${dir}/page.txt
