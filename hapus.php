@@ -29,7 +29,7 @@
                                               /___/                  
 Thank's To :
 l0c4lh34rtz - Kupat-Sayur - Mr.BucketHead - D4RKNE55 - Ndivic404 - ./R015 - Monkey B Luffy
-Mr.R10T1C404 - Trojanlove - Ccocot - Silen - jje incovers -silentc0ders - Zombie-Root
+Mr.R10T1C404 - Trojanlove - Ccocot - Silenc0ders - jje incovers -silentc0ders - Zombie-Root
 Index Php - d3xj - Kazuya404 - Mr.Xenophobic - X-Sword - Html404 - SPEEDY-03
 
 <form method=POST>
