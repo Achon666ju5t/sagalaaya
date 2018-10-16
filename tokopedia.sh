@@ -44,5 +44,6 @@ for generate in $(cat /dev/urandom | tr -dc 'A-Z0-9' | fold -w 13 | head -n 10);
    	sleep 1
    	: $((secs--))
 	done
+	fi
 
 done
