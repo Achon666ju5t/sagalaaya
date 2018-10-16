@@ -35,6 +35,14 @@ cok="_gorilla_csrf=MTUzOTY2MjU2MHxJbHBsUmtGTmRuaENUVEZyZURBNGNVdHNiMHd4VFdOdlkxV
 
 for generate in $(cat /dev/urandom | tr -dc 'A-Z0-9' | fold -w 13 | head -n 10); do
 	base="FPL$generate"
-	echo "$base [ $(ngelog $base | grep -Po "(?<=\"message\":\").*?(?=\"\,\")") ]"
-	
+	ok=$(ngelog $base | grep -Po "(?<=\"message\":\").*?(?=\"\,\")")
+	echo "$base [ $ok ]"
+	if "$ok" =~ 'Anda telah mencoba lebih dari 10x' ]]; then
+	secs=$((60 * 60))
+		while [ $secs -gt 0 ]; do
+   	echo -ne "$secs\033[0K\r"
+   	sleep 1
+   	: $((secs--))
+	done
+
 done
