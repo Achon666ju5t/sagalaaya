@@ -32,7 +32,8 @@ cok="_gorilla_csrf=MTUzOTY2MjU2MHxJbHBsUmtGTmRuaENUVEZyZURBNGNVdHNiMHd4VFdOdlkxV
 -H "upgrade-insecure-requests: 1" \
 -H "user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTssML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36"
 }
-
+while true; do
+printf "${merah}Ini Udah Auto Run, jangan di close\n"
 for generate in $(cat /dev/urandom | tr -dc 'A-Z0-9' | fold -w 13 | head -n 10); do
 	base="FPL$generate"
 	ok=$(ngelog $base | grep -Po "(?<=\"message\":\").*?(?=\"\,\")")
@@ -45,4 +46,5 @@ for generate in $(cat /dev/urandom | tr -dc 'A-Z0-9' | fold -w 13 | head -n 10);
    	: $((secs--))
 	done
 	fi
+done
 done
