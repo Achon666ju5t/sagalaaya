@@ -24,8 +24,7 @@ function get_token(){
 	get_link=$(get_action $1 $2)
 	echo $(curl -s ''$get_link'' | grep -Po "(?<=\"error_msg\":\").*?(?=\")")
 }
-echo 'please put empass with delimeter :'
-echo 'if your empass with not delimeter ( : ) run : okesiap.sh'
+echo 'please put empass with delimeter ( : )'
 read -p 'Your Empass : ' list
 x=$(gawk -F: '{ print $1 }' $list)
 y=$(gawk -F: '{ print $2 }' $list)
