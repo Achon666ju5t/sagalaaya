@@ -42,7 +42,7 @@ for (( i = 0; i < "${#email[@]}"; i++ )); do
 	decide_csrf=$(echo $(get_csrf) | grep -Po "(?<=name\=\"decide_csrf\" value\=\").*?(?=\" />)" | head -1 )
 	emails="${email[$i]}"
 	echo -n "$emails | AutoLogin: "
-	pw='set password samain semua gayn atau kalo mau beda beda pm sj facebook.com/Achon666ju5t.mil.id'
+	pw=$1
 	for opateuy in {1..4}; do
 		ceklogin=$(login $emails '$pw' $decide_csrf | grep -Po "(?<=\"message\":\").*?(?=\")")
 	done
